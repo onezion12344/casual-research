@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casual Research — 知識雜記</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+  background: #000;
+  color: #f5f5f7;
+  line-height: 1.6;
+}
+
+.hero {
+  min-height: 60vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: 80px 24px;
+  position: relative;
+}
+.hero::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(ellipse at center, rgba(108,92,231,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -2px;
+  background: linear-gradient(135deg, #f5f5f7 0%, #6c5ce7 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+}
+.hero p { color: #86868b; max-width: 500px; font-size: 1.05rem; }
+
+section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+.card {
+  background: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 16px;
+  transition: border-color 0.3s, transform 0.3s;
+  text-decoration: none;
+  display: block;
+  color: #f5f5f7;
+}
+.card:hover { border-color: #6c5ce7; transform: translateY(-2px); }
+.card .meta { font-size: 0.75rem; color: #6c5ce7; font-weight: 600; letter-spacing: 1px; margin-bottom: 6px; }
+.card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 6px; }
+.card p { font-size: 0.88rem; color: #86868b; }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+footer { text-align: center; padding: 40px; color: #555; font-size: 0.8rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <h1 class="reveal">Casual Research</h1>
+  <p class="reveal" style="transition-delay:0.1s">心理學、關係、日常好奇的事——事實核查過的知識隨筆。</p>
+</header>
+
+<section>
+  <div class="reveal">
+    <a href="attraction-and-conflict.html" class="card reveal" style="transition-delay:0.1s">
+      <div class="meta">Relationship Psychology · 2026-07-13</div>
+      <h3>🧠 喜歡 vs 矛盾感知</h3>
+      <p>喜歡一個人如何從根本上改變你對衝突的感知、判斷和應對？69% 的關係衝突為什麼無法解決——以及怎麼辦。</p>
+    </a>
+  </div>
+
+  <p class="reveal" style="margin-top: 40px; color: #555; font-size: 0.85rem; text-align: center;">
+    更多研究頁面陸續增加中⋯
+  </p>
+</section>
+
+<footer>
+  <a href="https://github.com/onezion12344/casual-research" style="color:#6c5ce7; text-decoration:none;">GitHub</a>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.2 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
